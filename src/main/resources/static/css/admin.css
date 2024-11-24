@@ -1,0 +1,98 @@
+body {
+    /* background: linear-gradient(135deg, #fbc2eb, #a6c1ee); */
+    color: #333;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.card {
+    background-color: #ffffff;
+    /* Branco para as cards */
+    border: 1px solid #00bcd4;
+    /* Borda azul-claro */
+    border-radius: 10px;
+    color: #333;
+}
+
+.card-header {
+    background-color: #ff6f61;
+    /* Azul claro */
+    border-bottom: 2px solid #e85c50;
+    /* Cor de destaque para a borda */
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+}
+
+.btn-custom {
+    background-color: #ff6f61;
+    /* Azul claro */
+    color: #fff;
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: #e85c50;
+    /* Verde escuro para hover */
+}
+
+.icon-large {
+    font-size: 2.5rem;
+}
+
+.footer {
+    margin-top: 30px;
+    text-align: center;
+    color: #fff;
+}
+
+.footer p {
+    font-size: 14px;
+}
+
+.navbar-custom {
+    background-color: #ff6f61;
+    border-bottom: 2px solid #e85c50;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.navbar-custom .navbar-nav .nav-link:hover {
+    color: #33475b;
+}
+
+.navbar-custom .dropdown-menu {
+    background-color: #ff6f61;
+    border: none;
+}
+
+.navbar-custom .dropdown-item {
+    color: #fff;
+}
+
+.navbar-custom .dropdown-item:hover {
+    color: #33475b;
+    background-color: #e85c50;
+}
+
+.readonly-field {
+    opacity: 0.6; /* Reduz a opacidade */
+    pointer-events: none; /* Garante que não seja editável */
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+.password-toggle-icon {
+    margin-left: -20px;
+    cursor: pointer;
+}

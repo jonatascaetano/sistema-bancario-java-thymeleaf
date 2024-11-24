@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco - Conta Bancária</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script th:src="@{/js/profile.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+
+</head>
+
+<body>
+    <!-- Header com Menu -->
+
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Banco XYZ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="accountsDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Contas
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountsDropdown">
+                            <li><a class="dropdown-item" href="#">Ver Conta</a></li>
+                            <li><a class="dropdown-item" href="#">Criar Conta</a></li>
+                            <li><a class="dropdown-item" href="#">Encerrar Conta</a></li>
+                            <li><a class="dropdown-item" th:href="@{/logout}">Sair da conta</a> </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Serviços
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="servicesDropdown">
+                            <li><a class="dropdown-item" href="#">Transferências</a></li>
+                            <li><a class="dropdown-item" href="#">Pagamentos</a></li>
+                            <li><a class="dropdown-item" href="#">Cartões</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="loansDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Empréstimos
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="loansDropdown">
+                            <li><a class="dropdown-item" href="#">Solicitar Empréstimo</a></li>
+                            <li><a class="dropdown-item" href="#">Ver Empréstimos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="investmentsDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Investimentos
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="investmentsDropdown">
+                            <li><a class="dropdown-item" href="#">Ver Investimentos</a></li>
+                            <li><a class="dropdown-item" href="#">Novo Investimento</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="supportDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Suporte
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="supportDropdown">
+                            <li><a class="dropdown-item" href="#">Central de Ajuda</a></li>
+                            <li><a class="dropdown-item" href="#">Fale Conosco</a></li>
+                            <li><a class="dropdown-item" href="#">FAQs</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1>Bem-vindo, <span th:text="${cliente.nome}">Cliente</span>!</h1>
+            <p>Gerencie suas informações e operações bancárias de forma segura e prática.</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Informações Pessoais -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-user icon-large"></i>
+                        <p>Informações Pessoais</p>
+                    </div>
+                    <div class="card-body">
+                        <h5>Nome: <span th:text="${cliente.nome}"></span></h5>
+                        <p>CPF: <span th:text="${cliente.cpf}"></span></p>
+                        <p>Email: <span th:text="${cliente.email}"></span></p>
+                        <p>Telefone: <span th:text="${cliente.telefone}"></span></p>
+                        <p>Endereço: <span th:text="${cliente.endereco}"></span></p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Informações Bancárias -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-wallet icon-large"></i>
+                        <p>Conta Bancária</p>
+                    </div>
+                    <div class="card-body">
+                        <h5>Número da Conta: <span th:text="${cliente.contaBancaria.numeroConta}"></span></h5>
+                        <p>Agência: <span th:text="${cliente.contaBancaria.agencia}"></span></p>
+                        <p>Tipo de Conta: <span th:text="${cliente.contaBancaria.tipoConta}"></span></p>
+                        <p>Saldo: <span th:text="${cliente.contaBancaria.saldo}"></span> BRL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Operações Bancárias -->
+        <div class="mt-5">
+            <h2 class="text-center mb-4">Operações Bancárias</h2>
+            <div class="row g-4">
+                <!-- Creditar -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-plus-circle icon-large"></i>
+                            <p>Creditar</p>
+                        </div>
+                        <div class="card-body text-center">
+                            <p>Adicione saldo à sua conta.</p>
+                            <a class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#depositModal">Creditar</a>
+                            <!-- <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#depositModal">Creditar</button> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Debitar -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-minus-circle icon-large"></i>
+                            <p>Debitar</p>
+                        </div>
+                        <div class="card-body text-center">
+                            <p>Retire saldo da sua conta.</p>
+                            <a class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#withdrawModal">Debitar</a>
+                            <!-- <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#withdrawModal">Debitar</button> -->
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Transferir -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-exchange-alt icon-large"></i>
+                            <p>Transferir</p>
+                        </div>
+                        <div class="card-body text-center">
+                            <p>Envie dinheiro para outra conta.</p>
+                            <a class="btn btn-custom" data-bs-toggle="modal"
+                                data-bs-target="#transferModal">Transferir</a>
+                            <!-- <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#transferModal">Transferir</button> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Histórico de Transações -->
+        <div class="mt-5">
+            <h2 class="text-center mb-4">Histórico de Transações</h2>
+            <div class="card">
+                <div class="card-header text-center">
+                    Últimas Transações
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead style="color: #ff6f61;">
+                                <tr>
+                                    <th scope="col">Data e Hora</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Origem</th>
+                                    <th scope="col">Destino</th>
+                                    <th scope="col">Valor (BRL)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="transacao : ${transacoes}">
+                                    <td th:text="${transacao.dataHora}"></td>
+                                    <td th:text="${transacao.tipoTransacao}"></td>
+                                    <td
+                                        th:text="${transacao.contaOrigem != null ? transacao.contaOrigem.numeroConta : '-'}">
+                                    </td>
+                                    <td
+                                        th:text="${transacao.contaDestino != null ? transacao.contaDestino.numeroConta : '-'}">
+                                    </td>
+                                    <td th:text="${transacao.valor}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Depósito -->
+        <div class="modal fade" id="depositModal" tabindex="-1" aria-labelledby="depositModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="depositModalLabel">Creditar Saldo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/conta/creditar}" method="post" id="depositForm">
+                            <div class="mb-3">
+                                <label for="depositAmount" class="form-label">Valor</label>
+                                <input type="number" class="form-control" id="depositAmount" name="valor"
+                                    placeholder="Digite o valor" required>
+                            </div>
+                            <input type="hidden" name="contaId" th:value="${cliente.contaBancaria.id}">
+                            <div th:if="${modalErro == 'depositar'}">
+                                <div class="alert alert-danger" id="depositError" role="alert">
+                                    <span th:text="${mensagemErro}"></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-custom" form="depositForm">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Modal de Retirada -->
+        <div class="modal fade" id="withdrawModal" tabindex="-1" aria-labelledby="withdrawModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="withdrawModalLabel">Retirar Saldo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/conta/debitar}" method="post" id="withdrawForm">
+                            <div class="mb-3">
+                                <label for="withdrawAmount" class="form-label">Valor</label>
+                                <input type="number" class="form-control" id="withdrawAmount" name="valor"
+                                    placeholder="Digite o valor" required>
+                            </div>
+                            <input type="hidden" name="contaId" th:value="${cliente.contaBancaria.id}">
+                            <div th:if="${modalErro == 'retirar'}">
+                                <div class="alert alert-danger" id="withdrawError" role="alert">
+                                    <span th:text="${mensagemErro}"></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-custom" form="withdrawForm">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Transferência -->
+        <div class="modal fade" id="transferModal" tabindex="-1" aria-labelledby="transferModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="transferModalLabel">Transferir Saldo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/conta/transferir}" method="post" id="transferForm">
+                            <div class="mb-3">
+                                <label for="accountNumber" class="form-label">Número da Conta</label>
+                                <input type="text" class="form-control" id="accountNumber" name="numeroContaDestino"
+                                    placeholder="Digite o número da conta de destino" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="transferAmount" class="form-label">Valor</label>
+                                <input type="number" class="form-control" id="transferAmount" name="valor"
+                                    placeholder="Digite o valor" required>
+                            </div>
+                            <input type="hidden" name="contaOrigemId" th:value="${cliente.contaBancaria.id}">
+                            <div th:if="${modalErro == 'transferir'}">
+                                <div class="alert alert-danger" id="transferError" role="alert">
+                                    <span th:text="${mensagemErro}"></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-custom" form="transferForm">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div th:if="${modalErro == 'retirar'}">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                document.addEventListener('DOMContentLoaded', function () {
+                    var withdrawModal = new bootstrap.Modal(document.getElementById('withdrawModal'));
+                    withdrawModal.show();
+                });
+                /*]]>*/
+            </script>
+        </div>
+
+        <div th:if="${modalErro == 'transferir'}">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                document.addEventListener('DOMContentLoaded', function () {
+                    var transferModal = new bootstrap.Modal(document.getElementById('transferModal'));
+                    transferModal.show();
+                });
+                /*]]>*/
+            </script>
+        </div>
+
+
+        <div th:if="${modalErro == 'depositar'}">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                document.addEventListener('DOMContentLoaded', function () {
+                    var depositModal = new bootstrap.Modal(document.getElementById('depositModal'));
+                    depositModal.show();
+                });
+                /*]]>*/
+            </script>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2024 Banco XYZ. Todos os direitos reservados.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

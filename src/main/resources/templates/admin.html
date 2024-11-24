@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <script th:src="@{/js/admin.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+
+<body>
+
+    <!-- Header com Menu -->
+
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Banco XYZ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="accountsDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Contas
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountsDropdown">
+                            <li><a class="dropdown-item" href="#">Ver Conta</a></li>
+                            <li><a class="dropdown-item" href="#">Criar Conta</a></li>
+                            <li><a class="dropdown-item" href="#">Encerrar Conta</a></li>
+                            <li><a class="dropdown-item" th:href="@{/logout}">Sair da conta</a> </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Serviços
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="servicesDropdown">
+                            <li><a class="dropdown-item" href="#">Transferências</a></li>
+                            <li><a class="dropdown-item" href="#">Pagamentos</a></li>
+                            <li><a class="dropdown-item" href="#">Cartões</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="loansDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Empréstimos
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="loansDropdown">
+                            <li><a class="dropdown-item" href="#">Solicitar Empréstimo</a></li>
+                            <li><a class="dropdown-item" href="#">Ver Empréstimos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="investmentsDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Investimentos
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="investmentsDropdown">
+                            <li><a class="dropdown-item" href="#">Ver Investimentos</a></li>
+                            <li><a class="dropdown-item" href="#">Novo Investimento</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="supportDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Suporte
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="supportDropdown">
+                            <li><a class="dropdown-item" href="#">Central de Ajuda</a></li>
+                            <li><a class="dropdown-item" href="#">Fale Conosco</a></li>
+                            <li><a class="dropdown-item" href="#">FAQs</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Inicio container -->
+
+    <div class="container mt-4">
+        <!-- Bem-vindo -->
+        <div class="text-center mb-4">
+            <h1>Bem-vindo, <span th:text="${admin.nome}">Cliente</span>!</h1>
+            <p>Gerencie as operações do banco de maneira prática e eficiente.</p>
+        </div>
+
+        <!-- Seções principais -->
+        <div class="row g-4">
+            <!-- Gerenciar Contas -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <i class="fas fa-users icon-large"></i>
+                        <p>Gerenciar Contas</p>
+                    </div>
+                    <div class="card-body text-center">
+                        <p>Visualize e administre contas bancárias.</p>
+                        <a href="#" class="btn btn-custom">Acessar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Relatórios -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <i class="fas fa-chart-line icon-large"></i>
+                        <p>Relatórios</p>
+                    </div>
+                    <div class="card-body text-center">
+                        <p>Acompanhe o desempenho financeiro.</p>
+                        <a href="#" class="btn btn-custom">Visualizar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configurações -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <i class="fas fa-cogs icon-large"></i>
+                        <p>Configurações</p>
+                    </div>
+                    <div class="card-body text-center">
+                        <p>Gerencie as configurações do sistema.</p>
+                        <a href="#" class="btn btn-custom">Configurar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <h2 class="text-center mb-4">Lista de Clientes</h2>
+            <div class="card">
+                <div class="card-header text-center">
+                    Clientes e Contas Bancárias
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead style="color: #ff6f61;">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>CPF</th>
+                                    <th>Telefone</th>
+                                    <th>Número da Conta</th>
+                                    <th>Agência</th>
+                                    <th>Saldo</th>
+                                    <th>Função</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="cliente : ${clientes}">
+                                    <td th:text="${cliente.id}"></td>
+                                    <td th:text="${cliente.nome}"></td>
+                                    <td th:text="${cliente.email}"></td>
+                                    <td th:text="${cliente.cpf}"></td>
+                                    <td th:text="${cliente.telefone}"></td>
+                                    <td th:text="${cliente.contaBancaria.numeroConta}"></td>
+                                    <td th:text="${cliente.contaBancaria.agencia}"></td>
+                                    <td th:text="${cliente.contaBancaria.saldo}"></td>
+                                    <td>
+                                        <span th:switch="${cliente.role.name()}">
+                                            <span th:case="'USER'">Cliente</span>
+                                            <span th:case="'ADMIN'">Administrador</span>
+                                        </span>
+                                    </td>
+
+
+                                    <td>
+                                        <button class="btn btn-warning btn-sm edit-btn" data-bs-toggle="modal"
+                                            data-bs-target="#updateClientModal" th:attr="
+                                            data-id=${cliente.id},
+                                            data-nome=${cliente.nome},
+                                            data-email=${cliente.email},
+                                            data-cpf=${cliente.cpf},
+                                            data-telefone=${cliente.telefone},
+                                            data-endereco=${cliente.endereco},
+                                            data-role=${cliente.role},
+                                            data-numeroconta=${cliente.contaBancaria.numeroConta},
+                                            data-agencia=${cliente.contaBancaria.agencia},
+                                            data-saldo=${cliente.contaBancaria.saldo}">
+                                            Editar
+                                        </button>
+
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão para abrir o modal -->
+        <button type="button" class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#createClientModal">
+            Criar Novo Cliente
+        </button>
+    </div>
+
+    <!-- Fim container -->
+
+
+
+
+
+    <!-- Modal com Formulário Editar -->
+    <div class="modal fade" id="updateClientModal" tabindex="-1" aria-labelledby="updateClientModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <form id="updateClientForm" th:action="@{/admin/atualizarCliente}" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateClientModalLabel">Editar Cliente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-- Mostrar mensagens de erro, se houver -->
+                    <div th:if="${modalErro == 'editar'}" class="alert alert-danger" role="alert">
+                        <strong>Erro:</strong> Não foi possível editar o cliente. Verifique os dados e tente novamente.
+                    </div>
+                    <div class="modal-body">
+                        <input th:value="${cliente?.id}" type="hidden" class="form-control" id="clienteId" name="id">
+
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input th:value="${cliente?.nome}" type="text" class="form-control" id="nome" name="nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input th:value="${cliente?.email}" type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input th:value="${cliente?.cpf}" type="text" class="form-control" id="cpf" name="cpf" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input  th:value="${cliente?.telefone}"  type="text" class="form-control" id="telefone" name="telefone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="endereco" class="form-label">Endereço</label>
+                            <input  th:value="${cliente?.endereco}"  type="text" class="form-control" id="endereco" name="endereco" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Função</label>
+                            <select class="form-select" id="role" name="role" required>
+                                <option value="ADMIN" th:selected="${cliente != null and cliente.role != null and cliente.role.name() == 'ADMIN'}">Administrador</option>
+                                <option value="USER" th:selected="${cliente != null and cliente.role != null and cliente.role.name() == 'USER'}">Cliente</option>
+
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="numeroConta" class="form-label">Número da Conta</label>
+                            <input th:value="${cliente?.contaBancaria?.numeroConta}" type="text" class="form-control" id="numeroConta" name="contaBancaria.numeroConta" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="agencia" class="form-label">Agência</label>
+                            <input th:value="${cliente?.contaBancaria?.agencia}" type="text" class="form-control" id="agencia" name="contaBancaria.agencia" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="saldo" class="form-label">Saldo</label>
+                            <input th:value="${cliente?.contaBancaria?.saldo}" type="number" class="form-control" id="saldo" name="contaBancaria.saldo" readonly>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal com Formulário Criar -->
+    <div class="modal fade" id="createClientModal" tabindex="-1" aria-labelledby="createClientModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createClientModalLabel">Criar Novo Cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form th:action="@{/admin/novoCliente}" method="post">
+                    <div class="modal-body">
+                        <!-- Exibe a mensagem de erro, se houver -->
+                        <div th:if="${modalErro == 'criar'}" class="alert alert-danger" role="alert">
+                            <strong>Erro:</strong> Não foi possível criar o cliente. Verifique os dados e tente
+                            novamente.
+                        </div>
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input  th:value="${clienteNovo?.nome}"  type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required
+                                maxlength="100">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input  th:value="${clienteNovo?.cpf}"  type="text" class="form-control" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx"
+                                oninput="mascara(this)" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+                                title="O CPF deve estar no formato xxx.xxx.xxx-xx">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input  th:value="${clienteNovo?.email}"  type="email" class="form-control" id="email" name="email" placeholder="E-mail"
+                                required maxlength="150">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input  th:value="${clienteNovo?.telefone}"  type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone"
+                                required maxlength="15">
+                        </div>
+                        <div class="mb-3">
+                            <label for="endereco" class="form-label">Endereço</label>
+                            <input  th:value="${clienteNovo?.endereco}"  type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="senha" class="form-label">Senha</label>
+                            <div class="input-container">
+                                <input  th:value="${clienteNovo?.senha}"  type="password" id="senha" name="senha" class="form-control" placeholder="Senha"
+                                    required>
+                                <i class="bi bi-eye-slash-fill password-toggle-icon" id="togglePassword"></i>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Função</label>
+                            <select class="form-select" id="role" name="role" required>
+                                <option value="ADMIN" th:selected="${clienteNovo != null and clienteNovo.role != null and clienteNovo.role.name() == 'ADMIN'}">Administrador</option>
+                                <option value="USER" th:selected="${clienteNovo != null and clienteNovo.role != null and clienteNovo.role.name() == 'USER'}">Cliente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Criar Cliente</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exibir Modal de Criação com Erro -->
+    <div th:if="${modalErro == 'criar'}">
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            document.addEventListener('DOMContentLoaded', function () {
+                var createModal = new bootstrap.Modal(document.getElementById('createClientModal'));
+                createModal.show();
+            });
+            /*]]>*/
+        </script>
+    </div>
+
+    <!-- Exibir Modal de Edição com Erro -->
+    <div th:if="${modalErro == 'editar'}">
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            document.addEventListener('DOMContentLoaded', function () {
+                var editModal = new bootstrap.Modal(document.getElementById('updateClientModal'));
+                editModal.show();
+            });
+            /*]]>*/
+        </script>
+    </div>
+
+
+
+
+</body>
+
+</html>

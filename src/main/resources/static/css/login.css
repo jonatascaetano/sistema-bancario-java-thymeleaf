@@ -1,0 +1,44 @@
+body {
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    font-family: 'Arial', sans-serif;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+}
+
+.btn-custom {
+    background-color: #ff6f61;
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: #e85c50;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.alert {
+    border-radius: 10px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+.password-toggle-icon {
+    margin-left: -20px;
+    cursor: pointer;
+}
